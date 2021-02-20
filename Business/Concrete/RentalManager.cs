@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccsess.Abstract;
@@ -26,8 +28,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<RentalDto>>(_rentalDal.GetFullRentalDetails(),Messages.RentedCarList);
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
+            rental.RentDate = DateTime.Now.ToString("dd MMMM yyyy");
             _rentalDal.Add(rental);
             return new SuccessResult();
         }
@@ -46,7 +50,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>();
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
         public IDataResult<List<RentalDto>> GetFullRentalDetail(string returndate)

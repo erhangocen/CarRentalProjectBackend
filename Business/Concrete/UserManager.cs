@@ -8,6 +8,8 @@ using Core.Results.Concrete;
 using DataAccsess.Abstract;
 using Entities.Concrete;
 using System.Text.RegularExpressions;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 
 namespace Business.Concrete
 {
@@ -20,35 +22,9 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
-            if (user.FirstName.Length<3)
-            {
-                return new ErrorResult(Messages.NameInvalid);
-
-            }
-            if (user.LastName.Length<3)
-            {
-                return new ErrorResult(Messages.SurnameInvalid);
-            }
-            if (user.Password.Length<5)
-            {
-                return new ErrorResult(Messages.PasswordInvalid);
-            }
-            if (!Regex.IsMatch(user.Email,"@"))
-            {
-                return new ErrorResult(Messages.EmailInvalid);
-            }
-
-            var verify = _userDal.GetAll();
-            foreach (var okuser in verify)
-            {
-                if (okuser.Email == user.Email)
-                {
-                    return new ErrorResult(Messages.EmailInvalid2);
-                }
-            }
-
             _userDal.Add(user);
             return new SuccessResult(Messages.SuccessCreateAccount);
         }

@@ -14,7 +14,7 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             UserManager userManager = new UserManager(new EfUserDal());
-            //GetCarDetailTest(carManager);
+            GetCarDetailTest(carManager);
             //AddTest(carManager);
             //UpdateTest(carManager);
             //DeleteTest(carManager);
@@ -64,7 +64,7 @@ namespace ConsoleUI
 
         private static void GetRentalDetailTest(RentalManager rentalManager)
         {
-            var result = rentalManager.GetRentalDetail();
+            var result = rentalManager.GetFullRentalDetail();
 
             Console.WriteLine("\t RentedCar \t|\t Customer \t|\t RentDate \t|\t ReturnDate");
 
@@ -118,7 +118,7 @@ namespace ConsoleUI
         private static void UpdateTest(CarManager carManager)
         {
             var result = carManager.Update(new Car()
-                {CarId = 1, ColorId = 6, ModelYear = "2005", DailyPrice = 19, Description = "Classic", BrandId = 1});
+                {CarId = 1, ColorId = 6, ModelYear = 2005, DailyPrice = 19, Description = "Classic", BrandId = 1});
             Console.WriteLine(result.Message);
 
         }
@@ -127,7 +127,7 @@ namespace ConsoleUI
         {
             var result = carManager.Add(new Car()
             {
-                BrandId = 1, ColorId = 4, DailyPrice = 12, Description = "Slow", ModelYear = "2007"
+                BrandId = 1, ColorId = 4, DailyPrice = 12, Description = "Slow", ModelYear = 2007
             });
             Console.WriteLine(result.Message);
         }

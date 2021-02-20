@@ -32,6 +32,18 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
         
+        [HttpGet("getbtdetails")]
+        public IActionResult GetByDetails()
+        {
+            var result = _customerService.GetByDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result.Message);
+        }
+        
         [HttpPost("add")]
         public IActionResult Add(Customer customer)
         {

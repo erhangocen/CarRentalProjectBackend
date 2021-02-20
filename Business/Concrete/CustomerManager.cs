@@ -7,6 +7,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccsess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 
 namespace Business.Concrete
 {
@@ -16,6 +17,11 @@ namespace Business.Concrete
         public CustomerManager(ICustomerDal customerDal)
         {
             _customerDal = customerDal;
+        }
+
+        public IDataResult<List<CustomerDto>> GetByDetails()
+        {
+            return new SuccessDataResult<List<CustomerDto>>(_customerDal.GetByDetails());
         }
 
         public IDataResult<Customer> Add(Customer customer)

@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 
@@ -45,15 +47,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDto>>(_carDal.GetCarDetails(),Messages.CarListedByDetail);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if (Int32.Parse(car.ModelYear) <1998)
-            {
-                return new ErrorResult(Messages.CarYearInvalid);
-            }
-
             _carDal.Add(car);
-
             return new Result(true,Messages.CarAdded);
         }
 

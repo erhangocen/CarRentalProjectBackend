@@ -21,7 +21,7 @@ namespace Business.Constants
         public static string SurnameInvalid = "Geçersiz Soyisim";
         public static string PasswordInvalid = "Geçersiz Şifre";
         public static string EmailInvalid = "Geçersiz Email";
-        public static string EmailInvalid2 = "Girdiğiniz Email hesabı mevcut";
+        public static string EmailInvalid2 = "Girdiğiniz Email hesabı sistemimizde mevcut";
         public static string SuccessCreateAccount = "Hesabınız oluşturuldu";
         public static string SuccessUpdateAccount = "Bilgileriniz Güncellendi";
         public static string SuccessDeleteAccount = "Hesabınız silindi";
