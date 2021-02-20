@@ -59,6 +59,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(p=> p.CarId == id),Messages.SearchCar);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
