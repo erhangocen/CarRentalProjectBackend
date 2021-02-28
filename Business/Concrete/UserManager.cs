@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
@@ -10,6 +11,7 @@ using Entities.Concrete;
 using System.Text.RegularExpressions;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect.Autofac.Validation;
+using Core.Utilities.Business;
 
 namespace Business.Concrete
 {
@@ -25,6 +27,15 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
+            var check = CheckOtherEmail(user.Email);
+
+            var result = BusinessRules.Run(check);
+
+            if (result != null)
+            {
+                return result;
+            }
+            
             _userDal.Add(user);
             return new SuccessResult(Messages.SuccessCreateAccount);
         }
@@ -45,6 +56,17 @@ namespace Business.Concrete
         {
             _userDal.Update(user);
             return new SuccessResult(Messages.SuccessUpdateAccount);
+        }
+
+        private IResult CheckOtherEmail(string email)
+        {
+            var result = _userDal.GetAll(u => u.Email == email).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.EmailInvalid2);
+            }
+
+            return new SuccessResult();
         }
     }
 }

@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccsess", "DataAccsess\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{274C9CF2-B1B9-4437-8A2F-634B0B6E978A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{68B6B9B9-938B-478B-8813-0BA4C84D1412}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{68B6B9B9-938B-478B-8813-0BA4C84D1412}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{9BC81962-8B08-48EB-8FDD-AAA7A6997702}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
