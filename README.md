@@ -14,7 +14,7 @@
   <a href="https://www.youtube.com/watch?v=9xFsYmzSpTo"><img src="https://img.youtube.com/vi/9xFsYmzSpTo/0.jpg" alt="IMAGE ALT TEXT"></a>
 </div>
 
-**Click It ↑↑↑ 
+**Click It ↑↑↑**
 
 
 ## Layers
