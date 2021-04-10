@@ -11,6 +11,8 @@
 ## Project's Youtube Video ↓↓↓
 [![Youtube Video](https://img.youtube.com/vi/9xFsYmzSpTo&t=76s/0.jpg)](https://www.youtube.com/watch?v=9xFsYmzSpTo&t=76s)
 
+[![Little red riding hood](http://i.imgur.com/7YTMFQp.png)](https://www.youtube.com/watch?v=9xFsYmzSpTo&t=76s "Little red riding hood - Click to Watch!")
+
 
 
 ## Layers
