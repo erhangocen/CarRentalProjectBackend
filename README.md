@@ -9,7 +9,7 @@
 
 
 ## Project's Youtube Video ↓↓↓
-[![Youtube Video](https://img.youtube.com/vi_webp/9xFsYmzSpTo/mqdefault.webp?time=1618082400000&sqp=COD0x4MG&rs=AOn4CLD61_wRnJp49xmCGyglrf4NnEIvkQ)](https://www.youtube.com/watch?v=9xFsYmzSpTo&t=76s)
+[![Youtube Video](https://img.youtube.com/vi_9xFsYmzSpTo/maxresdefault.jpg)](https://www.youtube.com/watch?v=9xFsYmzSpTo&t=76s)
 
 
 
