@@ -18,9 +18,9 @@
 
 
 ## Layers
+#### Business, Core, DataAccsess, Entities, WebApi
 
 <details>
- #### Business, Core, DataAccsess, Entities, WebApi
   <summary>Details</summary>
 
 ### Business
