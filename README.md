@@ -14,6 +14,10 @@
 [![Little red riding hood](http://i.imgur.com/7YTMFQp.png)](https://www.youtube.com/watch?v=9xFsYmzSpTo&t=76s "Little red riding hood - Click to Watch!")
 
 
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=9xFsYmzSpTo&t=76s"><img src="https://img.youtube.com/vi/9xFsYmzSpTo&t=76s/0.jpg" alt="IMAGE ALT TEXT"></a>
+</div>
+
 
 ## Layers
 
