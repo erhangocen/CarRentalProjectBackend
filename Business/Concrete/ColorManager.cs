@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using Business.Constants;
 using Core.Results.Concrete;
+using Business.BussinessAspect.Autofac;
 
 namespace Business.Concrete
 {
@@ -30,18 +31,21 @@ namespace Business.Concrete
             return new SuccessDataResult<Color>(_colorDal.Get(p => p.ColorId == id));
         }
 
+        [SecuredOperation("Admin,Editor")]
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
             return new SuccessResult(Messages.ColorAdd);
         }
 
+        [SecuredOperation("Admin,Editor")]
         public IResult Update(Color color)
         {
             _colorDal.Update(color);
             return new SuccessResult(Messages.ColorUpdate);
         }
 
+        [SecuredOperation("Admin, Editor")]
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);

@@ -20,16 +20,16 @@ namespace WebAPI.Controllers
             _rentalService = rentalService;
         }
 
-        [HttpGet("getfullrentaldetail")]
-        public IActionResult GetFullRentalDetail()
+        [HttpGet("getfullrentaldetails")]
+        public IActionResult GetFullRentalDetails()
         {
-            var result = _rentalService.GetFullRentalDetail();
+            var result = _rentalService.GetFullRentalDetails();
             if (result.Success)
             {
                 return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpPost("add")]
@@ -41,7 +41,7 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         
         [HttpPost("update")]
@@ -53,7 +53,7 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         
         [HttpPost("delete")]
@@ -65,7 +65,7 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         
         [HttpGet("getall")]
@@ -77,19 +77,30 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         
-        [HttpGet("getrentaldetail")]
-        public IActionResult GetRentalDetail()
+        [HttpGet("getrentalsbyuser")]
+        public IActionResult GetRentalsByUser(int id)
         {
-            var result = _rentalService.GetFullRentalDetail(null);
+            var result = _rentalService.GetRentalsByUser(id);
             if (result.Success)
             {
                 return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
+        }
+
+        [HttpPost("checkcarstatus")]
+        public IActionResult CheckCarStatus(Rental rental)
+        {
+            var result = _rentalService.CheckCarStatus(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }

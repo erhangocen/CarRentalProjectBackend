@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Business.Abstract;
 using Business.Concrete;
 using Business.Constants;
+using Core.Entities.Concrete;
 using Core.Results.Concrete;
 using DataAccsess.Abstract;
 using DataAccsess.Concrete.EntityFramework;
@@ -21,7 +22,7 @@ namespace Business.ValidationRules.FluentValidation
 		{
 			RuleFor(u => u.FirstName.Length).GreaterThanOrEqualTo(3).WithMessage(Messages.NameInvalid);
 			RuleFor(u => u.LastName.Length).GreaterThanOrEqualTo(2).WithMessage(Messages.SurnameInvalid);
-			RuleFor(u => u.Password.Length).GreaterThanOrEqualTo(5).WithMessage(Messages.PasswordInvalid);
+			RuleFor(u => u.PasswordHash.Length).GreaterThanOrEqualTo(5).WithMessage(Messages.PasswordInvalid);
 			RuleFor(u =>u.Email).Must(isEmail).WithMessage(Messages.EmailInvalid);
         }
 

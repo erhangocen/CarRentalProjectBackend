@@ -8,10 +8,10 @@ using System.Text;
 using DataAccsess.Abstract;
 using Business.Constants;
 using Microsoft.AspNetCore.Http;
-using Core.Utilities.Helpers;
 using System.IO;
 using Core.Utilities.Business;
 using System.Linq;
+using Core.Utilities.Helpers; 
 
 namespace Business.Concrete
 {
@@ -26,7 +26,17 @@ namespace Business.Concrete
 
         public IResult Add(IFormFile file, CarImage carImage)
         {
-            carImage.ImagePath = FileHelper.AddAsync(file);
+            IResult result = BusinessRules.Run(CheckImageisFull(carImage));
+            if (result != null)
+            {
+                return result;
+            }
+
+            carImage.ImagePath = CarImageHelper.Add(file);
+
+            var data = carImage.ImagePath.Split('\\').LastOrDefault();
+            carImage.ImagePath = "/Images/CarImages/" + data;
+
             carImage.Date = DateTime.Now;
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.AddCarImage);
@@ -35,7 +45,7 @@ namespace Business.Concrete
         public IResult Delete(CarImage carImage)
         {
             var result = BusinessRules.Run(CarImageDelete(carImage));
-            FileHelper.DeleteAsync(_carImageDal.Get(c=>c.ImageId == carImage.ImageId).ImagePath);
+            CarImageHelper.Delete(_carImageDal.Get(c=>c.ImageId == carImage.ImageId).ImagePath);
             if (result != null)
             {
                 return result;
@@ -61,7 +71,9 @@ namespace Business.Concrete
 
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            carImage.ImagePath = FileHelper.UpdateAsync(_carImageDal.Get(c=>c.ImageId == carImage.ImageId).ImagePath, file);
+            carImage.ImagePath = CarImageHelper.Update(_carImageDal.Get(c => c.ImageId == carImage.ImageId).ImagePath, file);
+
+            carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult(Messages.DeleteCarImage);
         }
@@ -81,13 +93,24 @@ namespace Business.Concrete
         }
         private List<CarImage> CheckIfCarImageNull(int id)
         {
-            string path = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName + @"\Images\default.jpg");
+            string path = @"Images\CarImages\default.jpg";
+
             var result = _carImageDal.GetAll(c => c.CarId == id).Any();
             if (!result)
             {
                 return new List<CarImage> { new CarImage { CarId = id, ImagePath = path, Date = DateTime.Now } };
             }
             return _carImageDal.GetAll(p => p.CarId == id);
+        }
+
+        private IResult CheckImageisFull(CarImage carImage)
+        {
+            int result = _carImageDal.GetAll(c => c.CarId == carImage.CarId).Count;
+            if (result >= 5)
+            {
+                return new ErrorResult(Messages.ImagesisFull);
+            }
+            return new SuccessResult();
         }
     }
 }

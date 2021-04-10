@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Constants;
 using Core.Results.Concrete;
+using Business.BussinessAspect.Autofac;
 
 namespace Business.Concrete
 {
@@ -19,12 +20,14 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
+        [SecuredOperation("Admin,Editor")]
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
             return new SuccessResult(Messages.BrandAdd);
         }
 
+        [SecuredOperation("Admin,Editor")]
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
@@ -41,6 +44,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Brand>(_brandDal.Get(p => p.BrandId == id)); 
         }
 
+        [SecuredOperation("Admin,Editor")]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);

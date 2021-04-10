@@ -7,6 +7,7 @@ using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.JWT;
 using DataAccsess.Abstract;
 using DataAccsess.Concrete.EntityFramework;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +38,23 @@ namespace Business.DependencyResolvers.Autofac
             
             builder.RegisterType<CarImageManager>().As<ICarImageService>();
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            builder.RegisterType<ProfilePhotoManager>().As<IProfilePhotoService>();
+            builder.RegisterType<EfProfilePhotoDal>().As<IProfilePhotoDal>();
+
+            builder.RegisterType<ClaimManager>().As<IClaimService>();
+            builder.RegisterType<EfClaimDal>().As<IClaimDal>();
+
+            builder.RegisterType<CreditCardManager>().As<ICreditCardSevice>();
+            builder.RegisterType<EfCreditCardDal>().As<ICreditCardDal>();
+
+            builder.RegisterType<PaymentManager>().As<IPaymentService>();
+
+            builder.RegisterType<ContactManager>().As<IContactService>();
+            builder.RegisterType<EfContactDal>().As<IContactDal>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
