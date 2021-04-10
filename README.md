@@ -8,7 +8,8 @@
 [![Autofac](https://img.shields.io/badge/Autofac-004880?style=for-the-badge&logo=nuget&logoColor=white)](https://autofac.org/)
 
 
-[![Youtube Video](https://r2.community.samsung.com/t5/image/serverpage/image-id/737439i95EE49A5B2365EEC?v=1.0)](https://www.youtube.com/watch?v=9xFsYmzSpTo&t=76s)
+## Project Youtube Link
+[!Youtube Video](https://www.youtube.com/watch?v=9xFsYmzSpTo&t=76s)
 
 
 
