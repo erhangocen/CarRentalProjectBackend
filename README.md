@@ -11,7 +11,7 @@
 ## Project's Youtube Video ↓↓↓
 
 <div>
-  <a href="https://www.youtube.com/watch?v=9xFsYmzSpTo"><img src="https://i.hizliresim.com/aPI8DV.jpg" alt="IMAGE ALT TEXT"></a>
+  <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:6787417961624846336?utm_source=linkedin_share&utm_medium=member_desktop_share&utm_content=post"><img src="https://i.hizliresim.com/aPI8DV.jpg" alt="IMAGE ALT TEXT"></a>
 </div>
 
 **Click It ↑↑↑**
